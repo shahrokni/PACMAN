@@ -9,6 +9,7 @@
     g1 -- Ghost
     g2 -- Ghost
     g3 -- Ghost
+    g4 -- Ghost
 */
   const map = [
     [
@@ -497,6 +498,13 @@
     ],
   ];
 
+  const GHOST_TO_SVG = {
+    g1: BLINKY,
+    g2: PINKY,
+    g3: INKY,
+    g4: CLYED,
+  };
+
   const createMap = () => {
     const svg = document.getElementById("svg-container");
     if (!svg) return;
@@ -547,7 +555,7 @@
               "http://www.w3.org/2000/svg",
               "circle"
             );
-            coin.setAttribute("id", `powerball-${i}.${j}`);
+            powerBall.setAttribute("id", `powerball-${i}.${j}`);
             powerBall.setAttribute("r", "10");
             powerBall.setAttribute("fill", "white");
 
@@ -556,6 +564,14 @@
             powerBall.setAttribute("cx", left);
             powerBall.setAttribute("cy", top);
             svg.appendChild(powerBall);
+            break;
+          case "g1":
+          case "g2":
+          case "g3":
+          case "g4":
+            const ghost = GHOST_TO_SVG[c.value];
+            console.log(ghost);
+            svg.insertAdjacentHTML("beforeend", ghost);
             break;
           default:
             break;
