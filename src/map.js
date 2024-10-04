@@ -569,7 +569,6 @@
           case GHOST_INKY:
           case GHOST_CLYED:
             const ghost = GHOST_TO_SVG[c.value];
-            console.log(c.value, GHOST_TO_SVG);
             svg.insertAdjacentHTML("beforeend", ghost);
             break;
           default:
