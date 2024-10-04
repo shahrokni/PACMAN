@@ -4,7 +4,7 @@
   const COIN = "C";
   const POWER = "P";
   const TUNNEL = "T";
-  const PACMAN = "Y";
+  const PACMAN = "PACMAN";
   const GHOST_BLINKY = "G1";
   const GHOST_PINKY = "G2";
   const GHOST_INKY = "G3";
@@ -525,6 +525,10 @@
         rect.setAttribute("x", left);
         rect.setAttribute("y", top);
         svg.appendChild(rect);
+
+        if (c.value in gameState.positions) {
+          gameState.setPositionByKey(c.value, { r: i, c: j });
+        }
       });
     });
 
@@ -576,8 +580,8 @@
         }
       });
     });
-
     svg.insertAdjacentHTML("beforeend", PACMAN_NORMAL);
+    gameState.setEventDispatch(true);
   };
 
   createMap();
