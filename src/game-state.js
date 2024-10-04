@@ -14,7 +14,6 @@ const gameState = (() => {
 
     setEventDispatch(enabled) {
       this.eventDispatcherEnabled = enabled;
-      console.log("!", this);
     }
 
     dispatchStateEvent(event) {

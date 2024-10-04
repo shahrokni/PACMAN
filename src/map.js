@@ -3,7 +3,8 @@
   const BLOCK = "B";
   const COIN = "C";
   const POWER = "P";
-  const TUNNEL = "T";
+  const TUNNEL_LEFT = "TUNNEL_LEFT";
+  const TUNNEL_RIGHT = "TUNNEL_RIGHT";
   const PACMAN = "PACMAN";
   const GHOST_BLINKY = "G1";
   const GHOST_PINKY = "G2";
@@ -219,7 +220,7 @@
       { value: BLOCK },
     ],
     [
-      { value: EMPTY },
+      { value: TUNNEL_LEFT },
       { value: EMPTY },
       { value: EMPTY },
       { value: EMPTY },
@@ -239,7 +240,7 @@
       { value: EMPTY },
       { value: EMPTY },
       { value: EMPTY },
-      { value: EMPTY },
+      { value: TUNNEL_RIGHT },
     ],
     [
       { value: BLOCK },
@@ -498,10 +499,10 @@
   ];
 
   const GHOST_TO_SVG = {
-    G1: BLINKY,
-    G2: PINKY,
-    G3: INKY,
-    G4: CLYED,
+    G1: BLINKY_SVG,
+    G2: PINKY_SVG,
+    G3: INKY_SVG,
+    G4: CLYED_SVG,
   };
 
   const createMap = () => {
@@ -525,6 +526,12 @@
         rect.setAttribute("x", left);
         rect.setAttribute("y", top);
         svg.appendChild(rect);
+
+        if ([TUNNEL_LEFT, TUNNEL_RIGHT].includes(c.value)) {
+          !j
+            ? svg.insertAdjacentHTML("beforeend", TUNNEL_LEFT_SVG)
+            : svg.insertAdjacentHTML("beforeend", TUNNEL_RIGHT_SVG);
+        }
 
         if (c.value in gameState.positions) {
           gameState.setPositionByKey(c.value, { r: i, c: j });
@@ -580,7 +587,7 @@
         }
       });
     });
-    svg.insertAdjacentHTML("beforeend", PACMAN_NORMAL);
+    svg.insertAdjacentHTML("beforeend", PACMAN_NORMAL_SVG);
     gameState.setEventDispatch(true);
   };
 
