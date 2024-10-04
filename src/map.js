@@ -1,8 +1,8 @@
 (() => {
-  const EMPTY = "E";
-  const BLOCK = "B";
-  const COIN = "C";
-  const POWER = "P";
+  const EMPTY = "EMPTY";
+  const BLOCK = "BLOCK";
+  const COIN = "COIN";
+  const POWER = "POWER";
   const TUNNEL_LEFT = "TUNNEL_LEFT";
   const TUNNEL_RIGHT = "TUNNEL_RIGHT";
   const PACMAN = "PACMAN";
